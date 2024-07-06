@@ -15,24 +15,26 @@ function handler(event) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (state === "fulfilled") {
-        resolve(`Fulfilled promise in ${delay}ms`);
+        resolve(`${delay}ms`);
       } else {
-        reject(`Rejected promise in ${delay}ms`);
+        reject(`${delay}ms`);
       }
     }, delay);
   });
 
   promise
     .then((message) => {
+      console.log(`✅ Fulfilled promise in ${delay}ms`)
       iziToast.success({
-        title: 'OK',
-        message: message,
+        title: '',
+        message: `✅ Fulfilled promise in ${delay}ms`,
       });
     })
     .catch((message) => {
+      console.log(`❌ Rejected promise in ${delay}ms`)
       iziToast.error({
-        title: 'Error',
-        message: message,
+        title: '',
+        message: `❌ Rejected promise in ${delay}ms`,
       });
     });
 }
